@@ -1,0 +1,78 @@
+[tool.poetry]
+name = "etna-anomaly-detector"
+version = "0.1.0"
+readme = "README.md"
+description = "Solution from ETNA team for Red Lab Hackathon Case №1"
+license = "Apache-2.0"
+authors = []
+
+packages = [
+    { include = "etna_anomaly_detector", from = "." },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.9.0,<3.9.7 || >3.9.7,<3.10.0" # streamlit requires Python !=3.9.7
+pandas = "^1.5.3"
+streamlit = "^1.35.0"
+duckdb = "^0.10.3"
+plotly = "^5.22.0"
+ipywidgets = "^7.6.0"
+clickhouse-driver = "^0.2.7"
+statsmodels = "^0.14.1"
+scikit-learn = "^1.5.0"
+joblib = "^1.4.0"
+
+
+# Infra
+path = "^16.7.1"
+tqdm = "^4.66.1"
+loguru = "^0.7.2"
+
+[tool.poetry.dev-dependencies]
+# linters
+black = "^23.10.1"
+isort = "^5.12.0"
+flake8 = "^6.1.0"
+pep8-naming = "^0.13.3"
+flake8-bugbear = "^23.9.16"
+flake8-comprehensions = "^3.14.0"
+flake8-docstrings = "^1.7.0"
+codespell = "^2.2.6"
+types-requests = "^2.28.11"
+
+#jupyter
+ipykernel = "^6.26.0"
+
+[tool.black]
+line-length = 120
+target-version = ['py39']
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  # The following are specific to Black, you probably don't want those.
+  | blib2to3
+  | tests/data
+)/
+'''
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 120
+
+
+[build-system]
+requires = ["poetry-core>=1.8.0"]
+build-backend = "poetry.core.masonry.api"
